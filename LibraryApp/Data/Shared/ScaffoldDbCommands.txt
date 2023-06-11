@@ -1,0 +1,8 @@
+﻿AppUser:
+Scaffold-DbContext -Connection "Data Source=hydlp1037;Initial Catalog=AppUsers;Integrated Security=True;TrustServerCertificate=True" -Provider Microsoft.EntityFrameworkCore.SqlServer -Force -OutputDir Models/AppUser
+
+Scaffold-DbContext Name=AppUserDbConnectionString -Provider Microsoft.EntityFrameworkCore.SqlServer -Force -OutputDir Models/AppUser
+
+Library:
+Scaffold-DbContext Name=LibraryDbConnectionString -Provider Microsoft.EntityFrameworkCore.SqlServer -Force -OutputDir Models/Library
+
