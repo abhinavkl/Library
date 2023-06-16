@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { BookService } from './books.service';
+import { BookService } from '../../../services/books.service';
 import { Book } from 'src/app/models/library.model';
+import { BehaviorSubject } from 'rxjs';
+import { Pagination } from 'src/app/models/pagination.model';
 
 @Component({
   selector: 'app-books',
@@ -9,15 +11,28 @@ import { Book } from 'src/app/models/library.model';
 })
 export class BooksComponent implements OnInit {
   books:Book[]=[]
+  isCollapsed:boolean=true
 
   constructor(
     public bookService:BookService
   ){}
 
+  changePage(page:number){
+    let pagination=this.bookService.pagination.value
+    pagination.pageNumber=page
+    this.bookService.pagination.next(pagination)
+  }
+
+  changePageSize(pageSize:number){
+    let pagination=this.bookService.pagination.value
+    pagination.pageSize=pageSize
+    this.bookService.pagination.next(pagination)
+    console.log(this.bookService.pagination.value)
+  }
+
   ngOnInit(): void {
     this.bookService.getBooks().subscribe(books=>{
       this.books=books;
-      console.log(this.books)
     })
   }
 }

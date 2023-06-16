@@ -11,6 +11,8 @@ import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BooksModule } from './components/books/books.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { SharedModule } from './components/shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,8 @@ import { BooksModule } from './components/books/books.module';
     HttpClientModule,
     FormsModule,
     AppRoutingModule,
-    BooksModule
+    BooksModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

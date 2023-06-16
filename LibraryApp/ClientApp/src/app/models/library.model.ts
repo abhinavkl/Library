@@ -10,7 +10,9 @@ export class Book{
         public publisher:string='',
         public publishedOn:Date=new Date(),
         public authors:string[]=[],
-        public authorIds:number[]=[]
+        public authorIds:number[]=[],
+        public categories:string[]=[],
+        public categoryIds:number[]=[]
     ){}
 }
 
@@ -29,6 +31,12 @@ export class Author{
         public authorName:string='',
         public bookIds:number[]=[],
         public books:Book[]=[]  
+    ){}
+}
+
+export class BookFilters{
+    constructor(
+        public categories:number[]=[]
     ){}
 }
 

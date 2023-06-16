@@ -1,0 +1,16 @@
+<button type="button" class="btn btn-outline-success mb-2" (click)="fetchBooks()">
+    Update
+</button>
+<button type="button" class="btn btn-outline-warning m-1" (click)="categoryCollapsed = !categoryCollapsed" [attr.aria-expanded]="!categoryCollapsed">
+    Categories
+</button>    
+<div class="mt-1 categories" [collapse]="categoryCollapsed" [isAnimated]="true">
+    <ng-container *ngFor="let category of categories">
+        <button [className]="'btn m-1 '+(selectedCategories.includes(category.categoryId)?'btn-outline-danger':'btn-outline-secondary')"
+                 style="font-size: x-small;" 
+                (click)="updateCategoryFilters(category.categoryId)"        
+         >
+            {{category.categoryName}}
+        </button>
+    </ng-container>
+</div>

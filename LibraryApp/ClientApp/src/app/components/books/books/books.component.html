@@ -1,5 +1,31 @@
+<div class="row align-items-center">
+    <div class="col-1 text-start">
+        <button type="button" class="btn btn-primary" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed"
+        aria-controls="bookFilters">
+        Filters
+    </button>    
+    </div>
+    <div class="mx-4 col-10">
+        <app-pagination 
+            [currentPage]="1" 
+            [totalPages]="7" 
+            [pageSize]="100"
+            (changePage)="changePage($event)"
+            (changePageSize)="changePageSize($event)"
+        ></app-pagination>
+    </div>
+</div>
 <div class="row">
-    <div class="book-card border border-2 border-secondary" *ngFor="let book of books">
-        <app-book-card [book]="book"></app-book-card>
-    </div>    
+    <div class="col-2" *ngIf="!isCollapsed" > 
+        <div id="bookFilters" class="mt-2" [collapse]="isCollapsed" [isAnimated]="true">
+            <app-book-filters></app-book-filters>
+        </div>
+    </div>
+    <div class="col">
+        <div class="row">
+            <div class="book-card border border-2 border-secondary" *ngFor="let book of books">
+                <app-book-card [book]="book"></app-book-card>
+            </div>
+        </div>
+    </div>
 </div>

@@ -1,0 +1,8 @@
+.categories{
+    max-height: 20em;
+    overflow-y: auto;
+}
+
+label{
+    font-weight: bold;
+}
