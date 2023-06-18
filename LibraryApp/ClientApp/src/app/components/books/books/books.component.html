@@ -7,9 +7,9 @@
     </div>
     <div class="mx-4 col-10">
         <app-pagination 
-            [currentPage]="1" 
-            [totalPages]="7" 
-            [pageSize]="100"
+            [currentPage]="bookService.pagination.value.pageNumber" 
+            [totalPages]="bookService.pagination.value.totalPages"
+            [pageSize]="bookService.pagination.value.pageSize"
             (changePage)="changePage($event)"
             (changePageSize)="changePageSize($event)"
         ></app-pagination>

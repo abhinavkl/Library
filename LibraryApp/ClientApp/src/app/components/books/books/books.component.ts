@@ -21,13 +21,14 @@ export class BooksComponent implements OnInit {
     let pagination=this.bookService.pagination.value
     pagination.pageNumber=page
     this.bookService.pagination.next(pagination)
+    return this.bookService.fetchBooks()
   }
 
   changePageSize(pageSize:number){
     let pagination=this.bookService.pagination.value
     pagination.pageSize=pageSize
     this.bookService.pagination.next(pagination)
-    console.log(this.bookService.pagination.value)
+    return this.bookService.fetchBooks()
   }
 
   ngOnInit(): void {

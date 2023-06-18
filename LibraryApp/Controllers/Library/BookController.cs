@@ -21,7 +21,7 @@ namespace LibraryApp.Controllers.Library
         }
 
         [HttpGet("{filters}/{pagination}")]
-        public IEnumerable<BookDto> Get(string filters,string pagination)
+        public BookResult Get(string filters,string pagination)
         {
             try
             {
@@ -33,21 +33,13 @@ namespace LibraryApp.Controllers.Library
                         .Include(i => i.BookCategories).ThenInclude(i => i.Category)
                         .AsQueryable();
 
-                if(bookFilters != null)
-                {
-                    if (bookFilters.Categories.Count() > 0)
-                    {
-                        books = (from b in books
-                                 where b.BookCategories.Any(i=> bookFilters.Categories.Contains(i.CategoryId))
-                                 select b);
-                    }
-                }
 
-                return books.Take(bookPagination.PageSize).GetBookDtos();
+                BookResult result = books.GetBooksResult(bookFilters,bookPagination);
+                return result;
             }
             catch(Exception ex)
             {
-                return Array.Empty<BookDto>().AsEnumerable();            
+                return new BookResult();            
             }
         }
     }

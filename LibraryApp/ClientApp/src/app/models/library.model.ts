@@ -1,3 +1,4 @@
+import { Pagination } from "./pagination.model";
 
 export class Book{
     constructor(
@@ -13,6 +14,14 @@ export class Book{
         public authorIds:number[]=[],
         public categories:string[]=[],
         public categoryIds:number[]=[]
+    ){}
+}
+
+export class BookResult{
+    constructor(
+        public books:Book[],
+        public filters:BookFilters,
+        public pagination:Pagination
     ){}
 }
 

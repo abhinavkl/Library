@@ -15,11 +15,11 @@ import { BrowserModule } from "@angular/platform-browser";
     imports:[
         CommonModule,
         PipeModule,
-       CollapseModule.forRoot(),
-        BrowserAnimationsModule,
         SharedModule,
         FontAwesomeModule,
-        BrowserModule
+        BrowserModule,
+        CollapseModule.forRoot(),
+        BrowserAnimationsModule
     ],
     exports:[]
 })

@@ -1,7 +1,7 @@
 import { HttpClient, HttpParams } from "@angular/common/http";
 import { Inject, Injectable } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
-import { Book, BookFilters, Category } from "src/app/models/library.model";
+import { Book, BookFilters, BookResult, Category } from "src/app/models/library.model";
 import { Pagination } from "../models/pagination.model";
 
 @Injectable({
@@ -23,17 +23,17 @@ export class BookService{
 
     fetchBooks(){
         this.fetchData.next(true)
-        this.getBooks().subscribe(data=>{
-            console.log(data)
-        })
+        return this.getBooks()
     }
 
     getBooks(){
         if(this.fetchData.value){
             let filters=JSON.stringify(this.filters.value)
             let pagination=JSON.stringify(this.pagination.value)
-            this.http.get<Book[]>(this.baseUrl+'api/book/'+filters+'/'+pagination).subscribe(books=>{
-                this.books.next(books);
+            this.http.get<BookResult>(this.baseUrl+'api/book/'+filters+'/'+pagination).subscribe(result=>{
+                this.books.next(result.books);
+                this.filters.next(result.filters)
+                this.pagination.next(result.pagination)
             })
             this.fetchData.next(false)
         }

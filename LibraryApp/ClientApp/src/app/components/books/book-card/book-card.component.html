@@ -7,9 +7,24 @@
                 </div>
             </div>
         </div>
-        <div class="row" style="height: 3em;">
+        <div class="row" style="height: 4em;">
             <div class="col align-self-center text-center fw-bold text-warning" style="font-size: x-small;">
                 {{book.title}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col text-center" style="font-size: x-small;">
+                <a [href]="book.infoLink" target="_blank">
+                    <fa-icon [icon]="infoIcon" 
+                    title="info" 
+                    class="text-danger my-1"></fa-icon>
+                </a>
+                <a [href]="book.previewLink" target="_blank">
+                    <fa-icon 
+                    [icon]="openPreview" 
+                    title="preview" 
+                    class="text-danger mx-1"></fa-icon>
+                </a>
             </div>
         </div>
         <div class="row">
